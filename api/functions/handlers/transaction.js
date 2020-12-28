@@ -43,7 +43,7 @@ exports.getAllTransactions = async (req, res) => {
         userTransactions.push(data);
       }
       let finalData=userTransactions.sort(sortJson("createdAt"));
-    if(req.query.type && req.query.type==='recent') 
+    if(req.query.type && req.query.type==='recent' && finalData.length>5) 
           finalData.length=5;
     return res.json(finalData);
   } catch (err) {
